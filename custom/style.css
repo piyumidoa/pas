@@ -1,0 +1,94 @@
+/*
+
+Custom css file for Establishment Division
+
+*/
+
+.estb-tile {
+    text-align: center;
+}
+
+.estb-icon1 {
+    color: #9092c1;
+}
+
+.estb-icon2 {
+    color: #e6bca1;
+}
+
+.estb-icon3 {
+    color: #b4e7b8;
+}
+
+.estb-icon4 {
+    color: #e2b8a4;
+}
+
+.estb-icon5 {
+    color: #cb9bf3;
+}
+
+.estb-icon6 {
+    color: #8dc3ca;
+}
+
+.estb-icon7 {
+    color: #ca8d90;
+}
+
+.estb-icon-text{
+    color: black;
+}
+
+.estb-vertical-menu a {
+	
+	display: block;
+	text-align: center;
+    padding-top: 40px;
+    margin: 10px;
+}
+
+.estb-page-header {
+	padding: 15px 15px 15px 0px;
+	text-shadow: 2px 2px 3px #c0c0c0;
+	width: -webkit-fill-available;
+	align-self: center;
+}
+
+.estb-content {
+    min-height: 80%;
+}
+
+.estb-sub-header{
+    background-color: #dad6d6;
+}
+.estb-sub-1-header {
+    background-color: #a8a5a5;
+}
+
+.estb-footer {  
+    padding-top: 10px; 
+    padding-bottom: 10px;
+    margin: 0px;
+    background-color: rgb(155, 226, 155);
+}
+.page-menu-item {
+    padding: 15px;
+}
+.estb-total-row{
+    font-weight: 600
+}
+.estb-page-icon {
+	color: #808080;
+	padding: 15px;
+}
+.estb-row-icon {
+	color: #808080;
+}
+.estb-card-header {
+	padding: 0;
+	padding-left: 10px;
+}
+html, body {
+    height: 100%;
+}

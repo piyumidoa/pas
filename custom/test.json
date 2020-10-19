@@ -1,0 +1,23 @@
+array(2) {
+    [
+        0
+    ]=> object(stdClass)#25 (3) {
+        [
+            "id"
+        ]=> string(1) "1" [
+            "subject_officer"
+        ]=> string(5) "10000" [
+            "subject_file"
+        ]=> string(3) "3/8"
+    } [
+        1
+    ]=> object(stdClass)#26 (3) {
+        [
+            "id"
+        ]=> string(1) "2" [
+            "subject_officer"
+        ]=> string(5) "10000" [
+            "subject_file"
+        ]=> string(3) "3/6"
+    }
+}

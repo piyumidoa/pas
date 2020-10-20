@@ -87,10 +87,33 @@ class Performance_Appraisal_Model extends CI_Model {
           } 
       }
       
-      public function insert_appraiser_and_moderator($row) {
+
+      public function insert_appraiser_and_moderator($data) {
           
-          $this->db->where('personal_file', $row['personal_file']);
-          $this->db->update('appraiser_moderator', $row);
+          $result = $this->db->insert_batch('appraiser_moderator', $data);
+          return $result;
+      }
+      
+      public function appraiser_and_moderator_list( $branches ){
+          
+          $result_all = array();
+          foreach ( $branches as $key=>$value ) {
+              
+              $this->db->select( '*' );
+              $this->db->from('appraiser_moderator');
+              $this->db->like('personal_file', $key, 'after');
+              
+              $query = $this->db->get();
+              $result = $query->result();
+              $result_all= array_merge($result_all, $result);
+          }
+          return $result_all;
+      }
+      
+      public function delete_appraiser_and_moderator($id) {
+          
+          $this->db->where('id', $id);
+          $this->db->delete('appraiser_moderator');
           if($this->db->affected_rows() > 0)
           {
               return true;
@@ -98,5 +121,6 @@ class Performance_Appraisal_Model extends CI_Model {
               return false;
           } 
       }
+
    }
 ?> 

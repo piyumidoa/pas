@@ -1,4 +1,4 @@
-<div class="row"> 
+﻿<div class="row"> 
 <!-- menu buttons row  -->
     <div class="col-lg-2 page-menu-item"> 
     <i class='fas fa-print fa-2x estb-page-icon' onclick='printPage("printable-page")' title='මුද්‍රණය කරන්න'></i>
@@ -71,6 +71,28 @@
                 echo "</div>", "&nbsp";
             } 
             
+echo "<p>Moderator to Complete  --------------------------------------------------------------------------------------------</p>";
+            
+            echo "<div class='form-group'>";
+            echo "<label for='moderator_feedback'>ප්‍රමාණකරුගේ ඇගයීම</label>";
+            echo "<select class='form-control' name='moderator_feedback' >";
+            foreach ($feedback_options as $key=>$value) {
+                echo "<option value=", "$key";
+                echo (isset($moderator_feedback) && $moderator_feedback == $key) ?  ' selected' : ' ';
+                echo ">", "$value", "</option>";
+            }
+            echo "</select>";
+            echo form_error('moderator_feedback');
+            echo "</div>", "&nbsp";
+            
+            if( isset($moderator_completed_date)) {
+                
+                echo "<div class='form-group'>";
+                echo "<label  for='moderator_completed_date'>moderator_completed_date</label>";
+                echo "<input  class='form-control' type='date'  name='moderator_completed_date' value='".$moderator_completed_date."' >";
+                echo "</div>", "&nbsp";
+            }
+
             if( isset($form_action) && $form_action != 'NA') {
             echo "<button type='submit' class='btn btn-default' >
                     <i class='fas fa-save fa-1x' ></i> ".$btn_text."      

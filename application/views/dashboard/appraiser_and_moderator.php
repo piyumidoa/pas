@@ -1,4 +1,4 @@
-
+﻿
 <div class="container estb-content">
 	<div class="row ">
 		<div class="col-lg-11">
@@ -43,11 +43,14 @@
               <table id='appraisee_list'>                
                 <tr>
                 <td><input type='text' class='form-control' name='appraisee[]'  placeholder='ජාතික හැදුනුම්‍පත් අංකය'></td>
-                <td><button type='button' onClick='addAppraiseeInput()'>Add new row</button></td>
+                <td><span class='fa-stack fa-1x' onClick='addAppraiseeInput()'>
+                      <i class='fas fa-square fa-stack-2x estb-row-icon'></i>
+					  <i class='fas fa-plus fa-stack-1x fa-inverse'></i>
+					</span></td>
                 </tr>
               </table></div>
               ";
-        echo form_error('appraisee[]');
+        echo form_error('appraisee');
         
         ?>	
 	         <button type='submit' class='btn btn-default'>
@@ -61,35 +64,47 @@
             ?>
 				
 			</div>
-				<!-- approved vacancies for each sub unit table -->
+				<!-- appraiser_and_moderator_list table -->
 			
 			<div class="row">
 				<table border="1" class="table table-bordered table-hover">
 	         <?php
-    if( isset($vacancies_list) && !empty($vacancies_list) ) {
+	 if( isset($appraiser_and_moderator_list) && !empty($appraiser_and_moderator_list) ) {
         echo "ප්‍රතිඵල ගණන : ", $num_rows;
         
         $i = 1;
-        echo "<tr class = 'estb-sub-header' >";
-        echo "<td>අනු අංශය</td>";
-        echo "<td>තනතුර </td>";        
-        echo "<td>අනුමත පුරප්පාඩු ගණන</td>";
-        echo "<td>අවසන් යාවත්කාලීන කළ දිනය</td>";
-        echo "<td> </td>";    
+        echo "<tr class = 'estb-sub-1-header' >";
+        echo "<td colspan='2'>ප්‍රමාණකරු</td>";
+        echo "<td colspan='2'>අගැයුම්කරු </td>";        
+        echo "<td colspan='3'>ඇගයුම්ලාභියා</td>";
+        echo "<td> </td>";  
         echo "<tr>";
         
-        foreach ($vacancies_list as $r) {
-            $i ++ ;
+        echo "<tr class = 'estb-sub-header' >";
+        echo "<td>නිලධාරියාගේ නම </td>";
+        echo "<td>තනතුර</td>";
+        echo "<td>නිලධාරියාගේ නම</td>";
+        echo "<td>තනතුර</td>";
+        echo "<td>ජාතික හැදුනුම්‍පත් අංකය </td>";
+        echo "<td>නිලධාරියාගේ නම</td>";
+        echo "<td>තනතුර</td>";
+        echo "<td> </td>";
+        echo "<tr>";
+        
+        foreach ($appraiser_and_moderator_list as $r) {
+            
             echo "<tr>";
-            echo "<td>" . $r->sub_unit_name . "</td>";
+            echo "<td>" . $r->moderator_officer_name ."<br/>". $r->moderator_nic_no  . "</td>";
+            echo "<td>" . $r->moderator_post_name . "</td>";
+            echo "<td>" . $r->appraiser_officer_name ."<br/>" . $r->appraiser_nic_no. "</td>";
+            echo "<td>" . $r->appraiser_post_name . "</td>";
+            echo "<td>" . $r->nic_no . "</td>";
+            echo "<td>" . $r->officer_name . "</td>";
             echo "<td>" . $r->post_name . "</td>";
-            echo "<td>" . $r->approved_vacancies . "</td>";     
-            echo "<td>" . $r->last_updated_date . "</td>";   
-            echo "<td><a href = '".base_url()."index.php/dashboard/approved_vacancies/edit_page/".$r->sub_unit_post_id."' title='සංස්කරණ පිටුව'>
-                    <i class='fas fa-pencil-alt fa-1x estb-row-icon' ></i></a></td>";
-            echo "<td><a href = '".base_url()."index.php/dashboard/approved_vacancies/delete/".$r->sub_unit_post_id."' title='මකන්න'>
+            
+            echo "<td><a href = '".base_url()."index.php/dashboard/appraiser_and_moderator/delete/".$r->personal_file_id."' title='මකන්න'>
                     <i class='fa fa-trash fa-1x estb-row-icon' ></i></a></td>";
-            echo "<tr>";
+            echo "<tr>";        
         }
     }
         ?>

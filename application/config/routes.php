@@ -59,6 +59,7 @@ $route['default_controller'] = 'Home';
 $route['dashboard'] = 'dashboard/Dashboard_controller';
 $route['dashboard/appraiser_and_moderator'] = 'dashboard/Dashboard_controller/appraiser_and_moderator';
 $route['dashboard/appraiser_and_moderator/add'] = 'dashboard/Dashboard_controller/add_appraiser_and_moderator';
+$route['dashboard/appraiser_and_moderator/delete/(\d+)'] = 'dashboard/Dashboard_controller/delete_appraiser_and_moderator/$1';
 
 //Personal file
 $route['personal_file'] = 'personal_file/PersonalFile_controller';

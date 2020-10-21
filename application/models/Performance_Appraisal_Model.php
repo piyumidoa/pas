@@ -37,7 +37,26 @@ class Performance_Appraisal_Model extends CI_Model {
           $result = $query->result();
           return $result;
       }          
-      
+      public function select_appraisee_list($user) {
+          
+          $branches = branch_names_array();
+          $result_all = array();
+          foreach ( $branches as $key=>$value ) {
+              
+              $this->db->select( '*, performance_appraisal.id as performance_appraisal_id, '.$value.'.appraiser as appraiser_id, '.$value.'.moderator as moderator_id' );
+              $this->db->from($value);
+              $this->db->join('performance_appraisal', $value.'.id = performance_appraisal.personal_file');
+              $this->db->where($value.'.appraiser', $user);
+              $this->db->or_where($value.'.moderator', $user);
+              $this->db->or_where($value.'.id', $user);
+              
+              $query = $this->db->get();
+              $result = $query->result();
+              $result_all= array_merge($result_all, $result);
+          }
+          return $result_all;
+      }
+
       public function edit_appraisee_details($row, $id) {
           
           $this->db->where('id', $id);
@@ -62,13 +81,12 @@ class Performance_Appraisal_Model extends CI_Model {
           return $result;
       }
       
-      public function appraisee_details( $appraisee_id, $increment_date, $branch_name ) {
+      public function appraisee_details( $performance_appraisal_id, $branch_name ) {
           
-          $this->db->select( '*' );
+          $this->db->select( '*, '.$branch_name.'.appraiser as appraiser_id, '.$branch_name.'.moderator as moderator_id' );
           $this->db->from($branch_name);
           $this->db->join('performance_appraisal', $branch_name.'.id = performance_appraisal.personal_file');
-          $this->db->where($branch_name.'.id', $appraisee_id);
-          $this->db->where('performance_appraisal.increment_date', $increment_date);
+          $this->db->where('performance_appraisal.id', $performance_appraisal_id);
           
           $query = $this->db->get();
           $result = $query->result();

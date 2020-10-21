@@ -62,7 +62,7 @@ class Performance_Appraisal_controller extends CI_Controller {
             $this->benchmark->mark('my_mark_end');
             $this->benchmark->mark('my_mark1_start');
             //check users appraisees list
-            $data['appraisees'] = $this->Performance_Appraisal_Model->select_appraisees_to_appraise( $userid );
+            $data['appraisees'] = $this->Performance_Appraisal_Model->>select_appraisee_list( $userid );
             
             $this->benchmark->mark('my_mark1_end');
             
@@ -297,17 +297,6 @@ class Performance_Appraisal_controller extends CI_Controller {
         $string_array[2] = 'හොඳයි';
         $string_array[3] = 'ඉතා හොඳයි';
         $string_array[4] = 'විශිෂ්ටයි';
-        return  $string_array;
-    }
-    
-    public function branch_names_array() {
-        
-        $string_array = array();
-        $string_array[1] = 'personal_file_e01';
-        $string_array[2] = 'personal_file_e02';
-        $string_array[3] = 'personal_file_e03';
-        $string_array[4] = 'personal_file_e04';
-        $string_array[5] = 'personal_file_e05';
         return  $string_array;
     }
     

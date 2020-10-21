@@ -1,4 +1,4 @@
-
+﻿
 <div class="container estb-content">
 	<div class="row ">
 		<div class="col-lg-11">
@@ -28,7 +28,7 @@
         
         $i = 1;
         echo "<tr class = 'estb-sub-header' >";
-        echo "<td>අංකය  </td>";    
+        echo "<td>NIC</td>";    
         echo "<td>වැටුප් වර්ධක  දිනය</td>";  
         echo "<td>ඇගයුම්ලාභියා  කාර්ය සාධන ඇගයීම සම්පුර්ණ කළ දිනය </td>"; 
         echo "<tr>";
@@ -37,7 +37,7 @@
         foreach ($appraisees as $r) {
             $i ++ ;
             echo "<tr>";
-            echo "<td>" . $r->personal_file_id. "</td>"; 
+            echo "<td>" . $r->nic_no. "</td>"; 
             echo "<td>" . $r->increment_date . "</td>";                
             echo "<td>" . $r->appraisee_completed_date . "</td>";   
             echo "<td><a href = '".base_url()."index.php/performance_appraisal/appraiser_details/".$r->personal_file_id."/".$r->increment_date."' target='_blank' title='වැඩි විස්තර'>
